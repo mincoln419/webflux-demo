@@ -18,8 +18,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    // https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb
-    implementation 'org.springframework.data:spring-boot-starter-mongodb-reactive'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb-reactive
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+
     // https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo
     implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.13.1'
     // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
