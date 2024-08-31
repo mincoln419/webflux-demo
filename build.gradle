@@ -22,9 +22,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
 
     // https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo
-    implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.13.1'
+    implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring3x:4.16.1'
     // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
-    implementation 'org.mongodb:mongodb-driver-sync:4.11.1'
+    implementation 'org.mongodb:mongodb-driver-sync'
+    implementation 'org.mongodb:mongodb-driver-core'
 
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
