@@ -2,18 +2,24 @@ spring:
   application:
     name: spring-webflux-demo
   webflux:
-    hiddenmethod:
+    hidden method:
       filter:
         enabled: true
   data:
     mongodb:
       database: test
       port: 27017
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 de:
   flapdoodle:
     mongodb:
       embedded:
         version: 4.0.2
+
 
 logging:
   level:
@@ -22,3 +28,4 @@ logging:
         data: TRACE
   # tag::hidden[]
 # end::hidden[]
+

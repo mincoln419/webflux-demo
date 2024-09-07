@@ -4,7 +4,7 @@ import com.ideatec.springwebfluxdemo.entity.Item;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public interface BlockingItemRepository extends CrudRepository<Item, String> {
 
 }
