@@ -1,7 +1,13 @@
 package com.ideatec.springwebfluxdemo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Objects;
 
+@Data
+@AllArgsConstructor
 public class CartItem {
 	private Item item;
 	private int quantity;
@@ -11,22 +17,6 @@ public class CartItem {
 	public CartItem(Item item){
 		this.item = item;
 		this.quantity = 1;
-	}
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	@Override

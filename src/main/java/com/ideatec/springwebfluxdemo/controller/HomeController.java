@@ -28,6 +28,8 @@ public class HomeController {
 
 	@GetMapping
 	public Mono<Rendering> home() {
+
+
 		return Mono.just(homeService.getRenderingData(Rendering.view("home.html")));
 	}
 

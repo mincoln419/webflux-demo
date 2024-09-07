@@ -1,14 +1,12 @@
 package com.ideatec.springwebfluxdemo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.springframework.data.geo.Point;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor

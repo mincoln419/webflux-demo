@@ -28,7 +28,10 @@ dependencies {
     implementation 'org.mongodb:mongodb-driver-core'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    implementation 'io.projectreactor.tools:blockhound:1.0.9.RELEASE'
+
     compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor('org.projectlombok:lombok')
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'

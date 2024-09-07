@@ -25,9 +25,12 @@ public class HomeService {
 	public Rendering getRenderingData(Rendering.Builder<?> builder){
 
 		return builder
-				.modelAttribute("items", this.itemRepository.findAll())
+				.modelAttribute("items", this.itemRepository.findAll()
+						.log("item repo fild all")
+				)
 				.modelAttribute("cart", this.cartRepository.findById("My Cart")
-						.defaultIfEmpty(new Cart("My Cart")))
+						.defaultIfEmpty(new Cart("My Cart")).log("cart find"))
+
 				.build();
 	}
 

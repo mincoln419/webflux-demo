@@ -1,25 +1,25 @@
 package com.ideatec.springwebfluxdemo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.bson.codecs.pojo.annotations.BsonId;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Data
+@AllArgsConstructor
 public class Cart {
 
 	private @BsonId String id;
-	private List<CartItem> cartItems;
+	private List<CartItem> cartItems = new ArrayList<>();
 
 	private Cart() {}
 
-	public Cart(String id){
-		this(id, new ArrayList<>());
-	}
-
-	public Cart(String id, List<CartItem> cartItems){
+	public Cart(String id) {
 		this.id = id;
-		this.cartItems = cartItems;
+		this.cartItems = new ArrayList<>();
 	}
 
 	public String getId() {
