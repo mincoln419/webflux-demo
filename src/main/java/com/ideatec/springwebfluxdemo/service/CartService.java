@@ -2,10 +2,12 @@ package com.ideatec.springwebfluxdemo.service;
 
 import com.ideatec.springwebfluxdemo.entity.Cart;
 import com.ideatec.springwebfluxdemo.entity.CartItem;
+import com.ideatec.springwebfluxdemo.entity.Item;
 import com.ideatec.springwebfluxdemo.repository.CartRepository;
 import com.ideatec.springwebfluxdemo.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -21,9 +23,9 @@ public class CartService {
 	}
 
 
-	public Mono<Cart> addToCart(@PathVariable String id) {
-		return this.cartRepository.findById("My Cart")
-				.defaultIfEmpty(new Cart("My Cart"))
+	public Mono<Cart> addToCart(@PathVariable String cartId, @PathVariable String id) {
+		return this.cartRepository.findById(cartId)
+				.defaultIfEmpty(new Cart(cartId))
 				.flatMap(cart -> cart.getCartItems().stream()
 						.filter(cartItem -> cartItem.getItem().getId().equals(id))
 						.findAny()
@@ -42,7 +44,11 @@ public class CartService {
 
 	}
 
-	public Mono<Cart> findById(String id){
+	public Mono<Cart> getCart(String id){
 		return cartRepository.findById(id);
+	}
+
+	public Flux<Item> getInventory(){
+		return this.itemRepository.findAll();
 	}
 }

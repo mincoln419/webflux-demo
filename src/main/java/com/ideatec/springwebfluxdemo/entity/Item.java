@@ -32,6 +32,13 @@ public class Item {
 		this.price = price;
 	}
 
+	public Item(String id, String name, String description, double price) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

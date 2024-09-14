@@ -1,12 +1,8 @@
 package com.ideatec.springwebfluxdemo.controller;
 
 import com.ideatec.springwebfluxdemo.entity.Cart;
-import com.ideatec.springwebfluxdemo.entity.CartItem;
-import com.ideatec.springwebfluxdemo.repository.CartRepository;
-import com.ideatec.springwebfluxdemo.repository.ItemRepository;
 import com.ideatec.springwebfluxdemo.service.CartService;
 import com.ideatec.springwebfluxdemo.service.HomeService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,14 +24,23 @@ public class HomeController {
 
 	@GetMapping
 	public Mono<Rendering> home() {
+		return Mono.just(
+				Rendering.view("home.html")
+						.modelAttribute("items", cartService.getInventory()
+								.log("item repo fild all")
+						)
+						.modelAttribute("cart", cartService.getCart("My Cart")
+								.defaultIfEmpty(new Cart("My Cart")).log("cart find"))
+
+						.build()
 
 
-		return Mono.just(homeService.getRenderingData(Rendering.view("home.html")));
+		);
 	}
 
 	@PostMapping("/add/{id}")
 	Mono<String> addToCart(@PathVariable String id) {
-		return cartService.addToCart(id)
+		return cartService.addToCart("My Cart", id)
 				.thenReturn("redirect:/");
 	}
 
@@ -45,7 +50,7 @@ public class HomeController {
 								  @RequestParam(required = false) boolean useAnd) {
 		return Mono.just(Rendering.view("home.html")
 				.modelAttribute("items", homeService.searchByExample(name, description, useAnd))
-				.modelAttribute("cart", this.cartService.findById("My Cart")
+				.modelAttribute("cart", this.cartService.getCart("My Cart")
 						.defaultIfEmpty(new Cart("My Cart"))).build()
 		);
 	}
