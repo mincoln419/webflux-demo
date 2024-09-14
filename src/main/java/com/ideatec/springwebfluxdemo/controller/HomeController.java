@@ -31,10 +31,7 @@ public class HomeController {
 						)
 						.modelAttribute("cart", cartService.getCart("My Cart")
 								.defaultIfEmpty(new Cart("My Cart")).log("cart find"))
-
 						.build()
-
-
 		);
 	}
 
