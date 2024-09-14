@@ -12,7 +12,9 @@ public class SpringWebfluxDemoApplication {
 
 	public static void main(String[] args) {
 
-		BlockHound.install();
+		BlockHound.builder()
+				.allowBlockingCallsInside(TemplateEngine.class.getCanonicalName(),"initialize")
+				.install();
 		SpringApplication.run(SpringWebfluxDemoApplication.class, args);
 	}
 

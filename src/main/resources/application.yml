@@ -29,3 +29,28 @@ logging:
   # tag::hidden[]
 # end::hidden[]
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include : "*"
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+  info:
+    os:
+      enabled: true
+    java:
+      enabled: true
+    env:
+      enabled: true
+
+
+info:
+  application:
+    name: ${spring.application.name}
+    description: Very cool Spring Boot application
+    version: '@project.version@'
+    spring-cloud-version: '@spring-cloud.version@'
+    spring-boot-version: '@project.parent.version@'
